@@ -15,13 +15,6 @@
           class="nav-item">
           <a class="nav-link" href="#">Add a Note</a>
         </router-link>
-        <router-link
-          active-class="active"
-          to="/note-list"
-          tag="li"
-          class="nav-item">
-          <a class="nav-link" href="#">My Notes</a>
-        </router-link>
       </ul>
     </div>
   </nav>

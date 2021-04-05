@@ -9,7 +9,7 @@
                 <div class="card-header">
                   <strong>Title : </strong>
                   {{ note.title }}
-                  <button type="button" class="btn btn-danger" style="float: right; margin: 5px" @click="removeNote(note.title)">Delete</button>
+                  <button type="button" class="btn btn-danger" style="float: right; margin: 5px" @click="removeNote(note.id)">Delete</button>
 <!--                  <button type="button" class="btn btn-secondary" style="float: right; margin: 5px">Edit</button>-->
                 </div>
                 <div class="card-body">
@@ -39,8 +39,8 @@
   export default {
     computed : mapGetters(["getNotes"]),
     methods :{
-      removeNote(title){
-        this.$store.dispatch("removeNote", title);
+      removeNote(id){
+        this.$store.dispatch("removeNote", id);
       }
     }
   }

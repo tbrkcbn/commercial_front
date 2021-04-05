@@ -39,8 +39,8 @@ const actions = {
       });
 
   },
-  removeNote({ commit }, title){
-    Vue.http.delete("http://localhost:8080/api/v1/notes",title)
+  removeNote({ commit }, id){
+    Vue.http.delete("http://localhost:8080/api/v1/notes/"+id)
   },
 
 }
