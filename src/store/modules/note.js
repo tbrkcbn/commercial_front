@@ -33,14 +33,15 @@ const actions = {
     Vue.http.post("http://localhost:8080/api/v1/notes",payload)
       .then((response) => {
         if(response.status === 200){
-          commit("updateNoteList",response.body)
+          commit("updateNoteList",payload)
         }
-        console.log(state.notes)
+        console.log(state.notes);
       });
 
   },
   removeNote({ commit }, id){
-    Vue.http.delete("http://localhost:8080/api/v1/notes/"+id)
+    Vue.http.delete("http://localhost:8080/api/v1/notes/"+id);
+    location.reload();
   },
 
 }

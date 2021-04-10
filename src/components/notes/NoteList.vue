@@ -40,6 +40,7 @@
     computed : mapGetters(["getNotes"]),
     methods :{
       removeNote(id){
+
         this.$store.dispatch("removeNote", id);
       }
     }
