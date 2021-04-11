@@ -15,7 +15,7 @@
                       class="form-control"></textarea>
           </div>
           <hr>
-          <button class="btn btn-primary" @click="saveNote">Save</button>
+          <button class="btn btn-primary" :disabled="saveActivity" @click="saveNote">Save</button>
         </div>
       </div>
     </div>
@@ -30,11 +30,33 @@ export default {
         title : "",
         content : "",
         dow : new Date()
+      },
+      saveButtonClicked : false
+    }
+  },
+  computed :{
+    saveActivity(){
+      if (this.note.title.length > 0 && this.note.content.length > 0){
+        return false;
+      } else {
+        return true;
       }
+    }
+  },
+  beforeRouteLeave(to,from,next){
+    if ((this.note.title.length > 0 || this.note.content.length > 0) && !this.saveButtonClicked){
+      if(confirm("There is some unsaved data! Do you still want to quit?")){
+        next();
+      }else{
+        next(false);
+      }
+    }else {
+      next();
     }
   },
   methods : {
     saveNote() {
+      this.saveButtonClicked = true;
       this.$store.dispatch("saveNote", this.note)
     }
   }

@@ -1,4 +1,6 @@
 import Vue from "vue";
+import { router } from "../../router";
+
 const state = {
   notes : []
 
@@ -33,7 +35,8 @@ const actions = {
     Vue.http.post("http://localhost:8080/api/v1/notes",payload)
       .then((response) => {
         if(response.status === 200){
-          commit("updateNoteList",payload)
+          commit("updateNoteList",payload);
+          router.replace("/");
         }
         console.log(state.notes);
       });
@@ -43,6 +46,7 @@ const actions = {
     Vue.http.delete("http://localhost:8080/api/v1/notes/"+id);
     location.reload();
   },
+
 
 }
 
